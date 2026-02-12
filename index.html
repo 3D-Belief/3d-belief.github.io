@@ -232,11 +232,69 @@
         <div class="columns is-centered">
           <div class="column is-full-width">
             <h2 class="title is-3">Capabilities of a Generative Belief Model</h2>
-            <img
-              src="./static/images/figure_intro.png"
-              class="capabilities-image"
-              alt="3D-Belief capabilities image"
-            />
+            <div class="content has-text-justified">
+              <p>
+                There remains a substantial gap between what previous visual generative models are trained to do and what a world model must provide for embodied decision making under partial observability. 
+                We theorize that robust embodied agents require a generative belief model that has the following key capacities.
+              </p>
+            </div>
+
+            <!-- 1) Multi-hypothesis belief sampling -->
+            <h3 class="title is-4" style="margin-top: 1.25rem;">Multi-hypothesis Belief Sampling</h3>
+            <video
+              class="capabilities-video"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            >
+              <source src="./static/videos/capabilities-multi.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+
+            <!-- 2) Sequential belief updating -->
+            <h3 class="title is-4" style="margin-top: 2rem;">Sequential Belief Updating</h3>
+            <video
+              class="capabilities-video"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            >
+              <source src="./static/videos/capabilities-seq.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+
+            <!-- 3) Spatially consistent scene memory -->
+            <h3 class="title is-4" style="margin-top: 2rem;">Spatially Consistent Scene Memory</h3>
+            <video
+              class="capabilities-video"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            >
+              <source src="./static/videos/capabilities-memory.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+
+            <!-- 4) Semantically informed future prediction -->
+            <h3 class="title is-4" style="margin-top: 2rem;">Semantically Informed Future Prediction</h3>
+            <video
+              class="capabilities-video"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            >
+              <source src="./static/videos/capabilities-semantic.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+
           </div>
         </div>
       </div>
@@ -248,10 +306,11 @@
         <div class="columns is-centered">
           <div class="column is-full-width">
             <h2 class="title is-3">3D-Belief</h2>
-            <!-- <div class="content has-text-justified">
+            <div class="content has-text-justified">
               <p>
+                We propose a generative 3D world model, 3D-Belief, that learns to predict and sequentially update explicit 3D representations of a scene online. We adopt <em>scene-level 3D diffusion</em>, where diffusion is applied to the entire 3D scene, in this case, all the Gaussian primitives.
               </p>
-            </div> -->
+            </div>
             <section class="hero teaser">
                 <div class="container is-max-desktop">
                   <div class="hero-body">
@@ -298,7 +357,65 @@
             <h2 class="title is-3">Real-World Results</h2>
             <div class="content has-text-justified">
               <p>
+                We evaluate 3D-Belief on a real mobile manipulation platform (Hello Robot Stretch) in a mock apartment environment. Note that the environments, 
+                objects, and target descriptions are all unseen during training, making this a real-world open-vocabulary object navigation setting.
               </p>
+            </div>
+            <h3 class="title is-4" style="margin-top: 1.25rem;">Example Setup</h3>
+            <div class="container is-max-desktop">
+              <div class="columns is-centered">
+                <div class="column is-full-width">
+                  <img
+                    src="./static/images/real.png"
+                    class="capabilities-image"
+                    alt="Real-World Setup"
+                  />
+                </div>
+              </div>
+            </div>
+            <h3 class="title is-4" style="margin-top: 1.25rem;">Qualitative Results</h3>
+            <p class="subtitle is-5"
+              style="margin-bottom: 0px; min-height: 50px; display: flex; align-items: center; justify-content: flex-start; text-align: left;">
+              <span>Open-Vocabulary Object Navigation: <em>Search for a <strong>mug</strong>.</em></span>
+            </p>
+
+            <!-- Video Row -->
+            <div class="columns is-centered">
+              <!-- Video 1: 3D-Belief -->
+              <div class="column is-half">
+                <div class="video-container">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source
+                      src="./static/videos/episode_6_3d_belief.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                  <p
+                    class="caption has-text-centered"
+                    style="margin-top: 5px; font-size: 1.2rem; font-weight: 500;"
+                  >
+                    3D-Belief (Success)
+                  </p>
+                </div>
+              </div>
+
+              <!-- Video 2: Gemini-3.0 Agent -->
+              <div class="column is-half">
+                <div class="video-container">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source
+                      src="./static/videos/episode_0_gemini.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                  <p
+                    class="caption has-text-centered"
+                    style="margin-top: 5px; font-size: 1.2rem; font-weight: 500;"
+                  >
+                    Gemini-3.0 Agent (Failed - Collision)
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
