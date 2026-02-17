@@ -181,19 +181,15 @@
 
     <section class="hero teaser">
       <div class="container is-max-desktop">
-        <div class="hero-body">
-          <video
-            class="teaser-image"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="auto"
-            poster="./static/images/figure_intro.png"
-          >
-            <source src="./static/videos/teaser.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+        <div class="content has-text-justified">
+          <div class="video-container">
+            <video autoplay controls muted loop playsinline width="100%">
+              <source
+                src="./static/videos/teaser.mp4"
+                type="video/mp4"
+              />
+            </video>
+          </div>
         </div>
       </div>
     </section>
@@ -313,19 +309,15 @@
             </div>
             <section class="hero teaser">
                 <div class="container is-max-desktop">
-                  <div class="hero-body">
-                    <video
-                      class="model-image"
-                      autoplay
-                      muted
-                      loop
-                      playsinline
-                      preload="auto"
-                      poster="./static/images/figure_intro.png"
-                    >
-                      <source src="./static/videos/model.mp4" type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
+                  <div class="content has-text-justified">
+                    <div class="video-container">
+                      <video autoplay controls muted loop playsinline width="100%">
+                        <source
+                          src="./static/videos/model.mp4"
+                          type="video/mp4"
+                        />
+                      </video>
+                    </div>
                   </div>
                 </div>
               </section>
@@ -342,7 +334,22 @@
             <h2 class="title is-3">Simulated Results</h2>
             <div class="content has-text-justified">
               <p>
+                We evaluate 3D-Belief on open-vocabulary object navigation tasks in the AI2-THOR simulator, where an agent must find a specified target object in a previously unseen environment.
               </p>
+            </div>
+            <h3 class="title is-4" style="margin-top: 1.25rem; margin-bottom: 1rem;">
+              Qualitative Results
+            </h3>
+            <div style="height: 2rem;"></div>
+            <div class="content has-text-justified">
+              <div class="video-container">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source
+                    src="./static/videos/simulated.mp4"
+                    type="video/mp4"
+                  />
+                </video>
+              </div>
             </div>
           </div>
         </div>
