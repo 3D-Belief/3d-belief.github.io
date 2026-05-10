@@ -9,7 +9,7 @@
     <meta name="keywords" content="3D-Belief, Embodied Agent, Mental Simulation" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>
-      3D-Belief: A Generative 3D World Model for Embodied Reasoning and Planning
+      Embodied Belief Inference via Generative 3D World Modeling
     </title>
 
     <!-- Google tag (gtag.js) -->
@@ -90,7 +90,7 @@
             <div class="column has-text-centered">
               <h1 class="title is-1 publication-title" style="display: flex; align-items: center; justify-content: center; gap: 0.0em;">
                 <img src="./static/images/logo.png" alt="3D-Belief Logo" style="height: 2.6em; width: auto; object-fit: contain; flex-shrink: 0;" />
-                <span>3D-Belief: A Generative 3D World Model for Embodied Reasoning and Planning</span>
+                <span>3D-Belief: Embodied Belief Inference via Generative 3D World Modeling</span>
               </h1>
               <div class="is-size-5 publication-authors">
                 <a href="https://yifanyin11.github.io" class="author-link">Yifan Yin<sup>1</sup>, </a>
@@ -205,19 +205,15 @@
             <h2 class="title is-3">Abstract</h2>
             <div class="content has-text-justified">
               <p>
-                Recent advances in visual generative models have shown the promise of learning generative world models. 
-                However, prior work has largely focused on rendering novel views of observed scenes or predicting future frames. 
-                While these models achieve impressive visual quality, they are not optimized to support downstream embodied 
-                reasoning and planning tasks. In this work, we theorize what properties generative world models should have to 
-                enhance embodied agents. As a first step, we focus on modeling an agent's beliefs over the 3D world and identify 
-                several key capabilities. These include spatially consistent scene memory, multi-hypothesis belief sampling, 
-                sequential belief updating, and semantically informed future prediction. We then propose 3D-Belief, a generative 
-                3D world model that instantiates these capabilities. Unlike prior work, 3D-Belief predicts unseen regions in an 
-                explicit, actionable 3D representation from partial observations and updates this belief online as new observations 
-                arrive. It enables embodied agents to reason about the 3D world under partial observability and make sequential 
-                decisions based on up-to-date beliefs. We evaluate 3D-Belief on a novel 3D imagination benchmark, 3D-CORE, and 
-                challenging object navigation tasks. Experimental results show that robots driven by 3D-Belief outperform those 
-                using state-of-the-art models in both simulations and the real world.
+                Recent advances in visual generative models have highlighted the promise of learning generative world models.
+                However, most existing approaches frame world modeling as novel-view synthesis or future-frame prediction, emphasizing visual realism rather than the structured uncertainty required by embodied agents acting under partial observability.
+                In this work, we propose a different perspective: world modeling as embodied belief inference in 3D space.
+                From this view, a world model should not merely render what may be seen, but maintain and update an agent's belief about the unobserved 3D world as new observations are acquired.
+                We identify several key capabilities for such models, including spatially consistent scene memory, multi-hypothesis belief sampling, sequential belief updating, and semantically informed prediction of unseen regions.
+                We instantiate these ideas in 3D-Belief, a generative 3D world model that infers explicit, actionable 3D beliefs from partial observations and updates them online over time.
+                Unlike prior visual prediction models, 3D-Belief represents uncertainty directly in 3D, enabling embodied agents to imagine plausible scene completions and reason over partially observed environments.
+                We evaluate 3D-Belief on 2D visual quality for scene memory and unobserved-scene imagination, object- and scene-level 3D imagination using our proposed 3D-CORE benchmark, and challenging object navigation tasks in both simulation and the real world.
+                Experiments show that 3D-Belief improves 2D and 3D imagination quality and downstream embodied task performance compared to state-of-the-art methods.
               </p>
             </div>
           </div>
@@ -310,7 +306,6 @@
                 We propose a generative 3D world model, 3D-Belief, that learns to predict and sequentially update explicit 3D representations of a scene online.
               </p>
             </div>
-            <h3 class="title is-4" style="margin-top: 1.25rem;">Model Overview</h3>
             <section class="hero teaser">
                 <div class="container is-max-desktop">
                   <div class="content has-text-justified">
@@ -325,126 +320,72 @@
                   </div>
                 </div>
             </section>
-            <div style="height: 4rem;"></div>
-            <h3 class="title is-4" style="margin-top: 1.25rem;">Planning with 3D-Belief</h3>
-            <div style="height: 4rem;"></div>
-            <section class="hero teaser">
-                <div class="container is-max-desktop">
-                  <div class="content has-text-justified">
-                    <div class="video-container">
-                      <video autoplay controls muted loop playsinline width="100%">
-                        <source
-                          src="./static/videos/planning.mp4"
-                          type="video/mp4"
-                        />
-                      </video>
-                    </div>
-                  </div>
-                </div>
-            </section>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Simulated Results -->
+    <!-- Vision Results -->
     <section class="section">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
-          <div class="column is-full-width">
-            <h2 class="title is-3">Simulated Results</h2>
+          <div class="column is-full-width visual-quality-section">
+            <h2 class="title is-3">2D Visual Quality of Belief Prediction</h2>
             <div class="content has-text-justified">
               <p>
-                We evaluate 3D-Belief on open-vocabulary object navigation tasks in the AI2-THOR simulator, where an agent must find a specified target object in a previously unseen environment.
+                We compare the visual quality of 3D-Belief's predictions against state-of-the-art generative world models on unseen future viewpoints. Each panel shows, from left to right: <strong>Ground Truth</strong>, <strong>3D-Belief (Ours)</strong>, <strong>DFoT</strong>, and <strong>Gen3C</strong> (RE10K) / <strong>NWM</strong> (AI2-THOR). 3D-Belief produces predictions that are more spatially consistent and more faithful to the ground truth than the baselines.
               </p>
             </div>
-            <h3 class="title is-4" style="margin-top: 1.25rem; margin-bottom: 1rem;">
-              Qualitative Results
-            </h3>
-            <div style="height: 2rem;"></div>
-            <div class="content has-text-justified">
-              <div class="video-container">
-                <video autoplay controls muted loop playsinline width="100%">
-                  <source
-                    src="./static/videos/simulated.mp4"
-                    type="video/mp4"
-                  />
-                </video>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  
-    <!-- Real-World Results -->
-    <section class="section">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column is-full-width">
-            <h2 class="title is-3">Real-World Results</h2>
-            <div class="content has-text-justified">
-              <p>
-                We evaluate 3D-Belief on a real mobile manipulation platform (Hello Robot Stretch) in a mock apartment environment. Note that the environments, 
-                objects, and target descriptions are all unseen during training, making this a real-world open-vocabulary object navigation setting.
-              </p>
-            </div>
-            <h3 class="title is-4" style="margin-top: 1.25rem;">Example Setup</h3>
-            <div class="container is-max-desktop">
-              <div class="columns is-centered">
-                <div class="column is-full-width">
-                  <img
-                    src="./static/images/real.png"
-                    class="capabilities-image"
-                    alt="Real-World Setup"
-                  />
-                </div>
-              </div>
-            </div>
-            <h3 class="title is-4" style="margin-top: 1.25rem;">Qualitative Results</h3>
-            <p class="subtitle is-5"
-              style="margin-bottom: 0px; min-height: 50px; display: flex; align-items: center; justify-content: flex-start; text-align: left;">
-              <span>Open-Vocabulary Object Navigation: <em>Search for a <strong>mug</strong>.</em></span>
-            </p>
 
-            <!-- Video Row -->
-            <div class="columns is-centered">
-              <!-- Video 1: 3D-Belief -->
-              <div class="column is-half">
-                <div class="video-container">
-                  <video autoplay controls muted loop playsinline width="100%">
-                    <source
-                      src="./static/videos/episode_6_3d_belief.mp4"
-                      type="video/mp4"
-                    />
-                  </video>
-                  <p
-                    class="caption has-text-centered"
-                    style="margin-top: 5px; font-size: 1.2rem; font-weight: 500;"
-                  >
-                    3D-Belief (Success)
-                  </p>
-                </div>
-              </div>
+            <h4 class="title is-5 capabilities-heading" style="margin-top: 1rem;">RE10K</h4>
+            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
+              <source src="./static/videos/comparisons/imagination_re10k_episode_000006_000013_000062_000070.mp4" type="video/mp4" />
+            </video>
+            <div style="height: 1rem;"></div>
+            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
+              <source src="./static/videos/comparisons/imagination_re10k_episode_000092_000017_000069_000073.mp4" type="video/mp4" />
+            </video>
+            <div style="height: 1rem;"></div>
+            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
+              <source src="./static/videos/comparisons/imagination_re10k_episode_000131_000000_000037_000079.mp4" type="video/mp4" />
+            </video>
+            <div style="height: 1rem;"></div>
+            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
+              <source src="./static/videos/comparisons/imagination_re10k_episode_000181_000000_000050_000079.mp4" type="video/mp4" />
+            </video>
+            <div style="height: 1rem;"></div>
+            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
+              <source src="./static/videos/comparisons/imagination_re10k_episode_000187_000032_000072_000086.mp4" type="video/mp4" />
+            </video>
+            <div style="height: 1rem;"></div>
+            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
+              <source src="./static/videos/comparisons/imagination_re10k_episode_000658_000000_000057_000079.mp4" type="video/mp4" />
+            </video>
 
-              <!-- Video 2: Gemini-3.0 Agent -->
-              <div class="column is-half">
-                <div class="video-container">
-                  <video autoplay controls muted loop playsinline width="100%">
-                    <source
-                      src="./static/videos/episode_0_gemini.mp4"
-                      type="video/mp4"
-                    />
-                  </video>
-                  <p
-                    class="caption has-text-centered"
-                    style="margin-top: 5px; font-size: 1.2rem; font-weight: 500;"
-                  >
-                    Gemini-3.0 Agent (Failed - Collision)
-                  </p>
-                </div>
-              </div>
-            </div>
+            <h4 class="title is-5 capabilities-heading" style="margin-top: 1.5rem;">AI2-THOR</h4>
+            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
+              <source src="./static/videos/comparisons/imagination_spoc_episode_000057_000000_000005_000010.mp4" type="video/mp4" />
+            </video>
+            <div style="height: 1rem;"></div>
+            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
+              <source src="./static/videos/comparisons/imagination_spoc_episode_000062_000002_000007_000012.mp4" type="video/mp4" />
+            </video>
+            <div style="height: 1rem;"></div>
+            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
+              <source src="./static/videos/comparisons/imagination_spoc_episode_000070_000000_000005_000010.mp4" type="video/mp4" />
+            </video>
+            <div style="height: 1rem;"></div>
+            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
+              <source src="./static/videos/comparisons/imagination_spoc_episode_000076_000000_000005_000010.mp4" type="video/mp4" />
+            </video>
+            <div style="height: 1rem;"></div>
+            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
+              <source src="./static/videos/comparisons/imagination_spoc_episode_000097_000033_000038_000044.mp4" type="video/mp4" />
+            </video>
+            <div style="height: 1rem;"></div>
+            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
+              <source src="./static/videos/comparisons/imagination_spoc_scene_114_s28_e39.mp4" type="video/mp4" />
+            </video>
           </div>
         </div>
       </div>
@@ -455,7 +396,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column is-full-width">
-            <h2 class="title is-3">3D-CORE Benchmark</h2>
+            <h2 class="title is-3">3D Object and Scene Imagination</h2>
             <div class="content has-text-justified">
               <p>
                 We introduce 3D-CORE (3D COntextual REasoning), a benchmark for evaluating whether 3D world models learn the kinds of belief reasoning that are directly required for embodied decision-making. 3D-CORE is designed to probe the capabilities that matter for downstream embodied planning directly: (1) <strong>spatial expansion</strong> beyond what is currently observed, (2) <strong>semantic reasoning</strong> grounded in 3D structure, and (3) <strong>long-horizon consistency</strong> under large viewpoint changes.
@@ -542,39 +483,107 @@
       </div>
     </section>
 
-    <!-- Visual Quality -->
+    <!-- Object Navigation Tasks -->
     <section class="section">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column is-full-width">
-            <h2 class="title is-3">Visual Quality</h2>
+            <h2 class="title is-3">Belief-Guided Planning</h2>
             <div class="content has-text-justified">
               <p>
-                We compare the visual quality of 3D-Belief's predictions with state-of-the-art generative world models. Note that 3D-Belief generates more accurate and spatially consistent predictions that better match the ground truth.
+                We use 3D-Belief as a mental 3D world model for navigation under partial observability. At each step, the agent updates its belief from egocentric RGB history and camera poses, samples multiple plausible 3D beliefs, imagines observations along candidate paths, and selects the rollout with the strongest open-vocabulary goal progress under uncertainty.
               </p>
             </div>
-            <div class="columns is-variable is-3">
-              <div class="column">
-                <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
-                  <source src="./static/videos/comparison_scene_70_s12_e26.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <div class="column">
-                <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
-                  <source src="./static/videos/comparison_scene_114_s28_e39.mp4" type="video/mp4" />
+            <div class="content has-text-justified">
+              <div class="video-container">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source
+                    src="./static/videos/planning.mp4"
+                    type="video/mp4"
+                  />
                 </video>
               </div>
             </div>
-            <div class="columns is-variable is-3">
-              <div class="column">
-                <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
-                  <source src="./static/videos/comparison_scene_96_s60_e84.mp4" type="video/mp4" />
+            <h3 class="title is-4" style="margin-top: 1.25rem; margin-bottom: 1rem;">
+              Simulated Results
+            </h3>
+            <div class="content has-text-justified">
+              <p>
+                We evaluate 3D-Belief on open-vocabulary object navigation tasks in the AI2-THOR simulator, where an agent must find a specified target object in a previously unseen environment.
+              </p>
+            </div>
+            <div style="height: 2rem;"></div>
+            <div class="content has-text-justified">
+              <div class="video-container">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source
+                    src="./static/videos/simulated.mp4"
+                    type="video/mp4"
+                  />
                 </video>
               </div>
-              <div class="column">
-                <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
-                  <source src="./static/videos/comparison_scene_87_s6_e18.mp4" type="video/mp4" />
-                </video>
+            </div>
+            <h3 class="title is-4" style="margin-top: 2rem;">Real-World Results</h3>
+            <div class="content has-text-justified">
+              <p>
+                We evaluate 3D-Belief on a real mobile manipulation platform (Hello Robot Stretch) in a mock apartment environment. Note that the environments,
+                objects, and target descriptions are all unseen during training, making this a real-world open-vocabulary object navigation setting.
+              </p>
+            </div>
+            <h4 class="title is-5" style="margin-top: 1.25rem;">Example Setup</h4>
+            <div class="container is-max-desktop">
+              <div class="columns is-centered">
+                <div class="column is-full-width">
+                  <img
+                    src="./static/images/real.png"
+                    class="capabilities-image"
+                    alt="Real-World Setup"
+                  />
+                </div>
+              </div>
+            </div>
+            <h4 class="title is-5" style="margin-top: 1.25rem;">Qualitative Results</h4>
+            <p class="subtitle is-5"
+              style="margin-bottom: 0px; min-height: 50px; display: flex; align-items: center; justify-content: flex-start; text-align: left;">
+              <span>Open-Vocabulary Object Navigation: <em>Search for a <strong>mug</strong>.</em></span>
+            </p>
+
+            <!-- Video Row -->
+            <div class="columns is-centered">
+              <!-- Video 1: 3D-Belief -->
+              <div class="column is-half">
+                <div class="video-container">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source
+                      src="./static/videos/episode_6_3d_belief.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                  <p
+                    class="caption has-text-centered"
+                    style="margin-top: 5px; font-size: 1.2rem; font-weight: 500;"
+                  >
+                    3D-Belief (Success)
+                  </p>
+                </div>
+              </div>
+
+              <!-- Video 2: Gemini-3.0 Agent -->
+              <div class="column is-half">
+                <div class="video-container">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source
+                      src="./static/videos/episode_0_gemini.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                  <p
+                    class="caption has-text-centered"
+                    style="margin-top: 5px; font-size: 1.2rem; font-weight: 500;"
+                  >
+                    Gemini-3.0 Agent (Failed - Collision)
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -607,7 +616,7 @@
       <div class="container is-max-desktop content">
         <h2 class="title">BibTeX</h2>
         <pre><code>@misc{yin20263dbelief,
-        title={3D-Belief: A Generative 3D World Model for Embodied Reasoning and Planning},
+        title={3D-Belief: Embodied Belief Inference via Generative 3D World Modeling},
         author={Yin, Yifan and Wen, Zehao and Chen, Jieneng and Zheng, Zehan and Dai, Nanru and Shi, Haojun and Ye, Suyu and Huang, Aydan and Zhang, Zheyuan and Yuille, Alan and Xie, Jianwen and Tewari, Ayush and Shu, Tianmin},
         year={2026},
         url= {https://3d-belief.github.io/}
