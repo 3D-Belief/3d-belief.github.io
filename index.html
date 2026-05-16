@@ -129,19 +129,6 @@
                   <div class="publication-links">
                     <span class="link-block">
                       <a
-                        href="static/3D_Belief.pdf"
-                        class="external-link button is-normal is-rounded is-dark"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
-                    <span class="link-block">
-                      <a
                         href="https://arxiv.org/abs/2605.11367"
                         class="external-link button is-normal is-rounded is-dark"
                         target="_blank"
@@ -155,7 +142,7 @@
                     </span>
                     <span class="link-block">
                       <a
-                        href=""
+                        href="https://3d-belief.github.io/demo/"
                         class="external-link button is-normal is-rounded is-dark"
                       >
                         <span class="icon">
@@ -239,7 +226,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column is-full-width">
-            <h2 class="title is-3">Core Capabilities of 3D Belief Models</h2>
+            <h2 class="title is-3">Core Capabilities</h2>
             <div class="content has-text-justified">
               <p>
                 There remains a substantial gap between what previous visual generative models are trained to do and what a world model must provide for embodied decision making under partial observability. 
@@ -343,7 +330,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column is-full-width visual-quality-section">
-            <h2 class="title is-3">2D Visual Quality of Belief Prediction</h2>
+            <h2 class="title is-3">Video Results</h2>
             <div class="content has-text-justified">
               <p>
                 We compare the visual quality of 3D-Belief's predictions against state-of-the-art generative world models on unseen future viewpoints. Each panel shows, from left to right: <strong>Ground Truth</strong>, <strong>3D-Belief (Ours)</strong>, <strong>DFoT</strong>, and <strong>Gen3C</strong> (RE10K) / <strong>NWM</strong> (AI2-THOR). 3D-Belief produces predictions that are more spatially consistent and more faithful to the ground truth than the baselines.
@@ -404,6 +391,91 @@
       </div>
     </section>
 
+    <!-- Interactive Results -->
+    <section class="section interactive-results-section" id="interactive-results">
+      <div class="container interactive-results-container">
+        <div class="columns is-centered">
+          <div class="column is-full-width">
+            <div class="interactive-results-copy">
+              <h2 class="title is-3">Interactive Results</h2>
+              <div class="content has-text-justified">
+                <p>
+                  Explore interactive 3D-Belief reconstructions from two demo scenes. Each viewer shows the reconstructed 3D scene directly, with a reveal slider for moving from observed geometry to imagined regions. For more examples, explore the <a href="https://3d-belief.github.io/demo/" target="_blank" rel="noopener noreferrer">interactive demo gallery</a>.
+                </p>
+              </div>
+            </div>
+
+            <div class="interactive-results-grid">
+              <article class="interactive-result">
+                <div class="interactive-viewer-frame">
+                  <iframe
+                    class="interactive-viewer"
+                    src="./static/interactive/viewer/embed_slider.html?episode=01&amp;assetRoot=scenes&amp;step=0&amp;v=project_page_interactive_v1"
+                    title="Interactive 3D-Belief result for scene 1"
+                    loading="lazy"
+                    allow="fullscreen; clipboard-write"
+                  ></iframe>
+                </div>
+                <a
+                  class="interactive-open-link"
+                  href="./static/interactive/viewer/embed_slider.html?episode=01&amp;assetRoot=scenes&amp;step=0&amp;showInput=1&amp;v=project_page_interactive_v1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="icon">
+                    <i class="fas fa-external-link-alt"></i>
+                  </span>
+                  <span>Open in New Tab for Better Visualization</span>
+                </a>
+              </article>
+
+              <article class="interactive-result">
+                <div class="interactive-viewer-frame">
+                  <iframe
+                    class="interactive-viewer"
+                    src="./static/interactive/viewer/embed_slider.html?episode=04&amp;assetRoot=scenes&amp;step=0&amp;v=project_page_interactive_v1"
+                    title="Interactive 3D-Belief result for scene 4"
+                    loading="lazy"
+                    allow="fullscreen; clipboard-write"
+                  ></iframe>
+                </div>
+                <a
+                  class="interactive-open-link"
+                  href="./static/interactive/viewer/embed_slider.html?episode=04&amp;assetRoot=scenes&amp;step=0&amp;showInput=1&amp;v=project_page_interactive_v1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="icon">
+                    <i class="fas fa-external-link-alt"></i>
+                  </span>
+                  <span>Open in New Tab for Better Visualization</span>
+                </a>
+              </article>
+            </div>
+
+            <div class="interactive-controls-hint" aria-label="Interactive viewer controls">
+              <span>
+                <i class="fas fa-mouse-pointer"></i>
+                <strong>Left-click</strong> and drag to rotate
+              </span>
+              <span>
+                <i class="fas fa-arrows-alt"></i>
+                <strong>Right-click</strong> and drag or <strong>WASD</strong> to move
+              </span>
+              <span>
+                <i class="fas fa-search-plus"></i>
+                <strong>Scroll</strong> to zoom
+              </span>
+              <span>
+                <i class="fas fa-sliders-h"></i>
+                Use the slider to reveal imagined geometry
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- 3D-CORE -->
     <section class="section">
       <div class="container is-max-desktop">
@@ -414,14 +486,6 @@
               <p>
                 We introduce 3D-CORE (3D COntextual REasoning), a benchmark for evaluating whether 3D world models learn the kinds of belief reasoning that are directly required for embodied decision-making. 3D-CORE is designed to probe the capabilities that matter for downstream embodied planning directly: (1) <strong>spatial expansion</strong> beyond what is currently observed, (2) <strong>semantic reasoning</strong> grounded in 3D structure, and (3) <strong>long-horizon consistency</strong> under large viewpoint changes.
               </p>
-
-              <figure style="margin-top: 1.5rem; text-align: center;">
-                <img
-                  src="./static/images/reasoning.png"
-                  alt="Overview of the 3D-CORE benchmark"
-                  style="max-width: 100%; height: auto; border-radius: 12px;"
-                />
-              </figure>
             </div>
             <h3 class="title is-4" style="margin-top: 1.25rem;">Object Completion</h3>
             <video
@@ -612,11 +676,11 @@
             <h2 class="title is-3">Conclusion</h2>
             <div class="content has-text-justified">
               <p>
-                In this work, we studied how generative world models can better support embodied reasoning and planning, 
-                and identified key capabilities for practical 3D belief modeling. We then proposed 3D-Belief, which predicts 
-                unseen regions in an explicit 3D representation from partial observations and updates this belief online. 
-                Experimental results on contextual reasoning and object navigation have shown that 3D-Belief improved both 
-                success rate and efficiency over existing generative world models. 
+                In this work, we introduce embodied belief inference via generative 3D world modeling and identify
+                key capabilities for practical 3D belief modeling. We propose 3D-Belief, which predicts unseen
+                regions as an explicit 3D representation from partial observations and updates this belief online.
+                Experiments on 2D visual quality, contextual reasoning, and object navigation show that 3D-Belief
+                improves 2D/3D scene memory and imagination, as well as downstream embodied task performance.
               </p>
             </div>
           </div>
