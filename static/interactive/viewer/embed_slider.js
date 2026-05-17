@@ -1,4 +1,4 @@
-import { OrbitControls } from "./OrbitControls.js?v=project_page_interactive_v1";
+import { OrbitControls } from "./OrbitControls.js?v=project_page_interactive_v2";
 import * as SPLAT from "https://cdn.jsdelivr.net/npm/gsplat@latest";
 
 const params = new URLSearchParams(window.location.search);
@@ -6,6 +6,24 @@ const episodeName = params.get("episode") || "01";
 const sliderAssetRoot = params.get("assetRoot") || "scenes";
 const requestedInitialStep = Number.parseInt(params.get("step") || "", 10);
 const showInputPanel = ["1", "true", "yes"].includes((params.get("showInput") || "").toLowerCase());
+
+function parsePoseParam() {
+  const raw = params.get("pose");
+  if (!raw) {
+    return null;
+  }
+  try {
+    const parsed = JSON.parse(raw);
+    if (parsed && typeof parsed === "object") {
+      return parsed;
+    }
+  } catch (error) {
+    console.warn("Could not parse pose param:", error);
+  }
+  return null;
+}
+
+const urlPose = parsePoseParam();
 
 const RENDER_RESOLUTION = 512;
 const CAMERA_FOCAL_FRACTION = 0.82;
@@ -154,7 +172,7 @@ function configureRevealControl(initialStep) {
 }
 
 function defaultPose() {
-  return poseDefaults?.[episodeName]?.imagined_first || FALLBACK_POSE;
+  return urlPose || poseDefaults?.[episodeName]?.imagined_first || FALLBACK_POSE;
 }
 
 function targetFromPose(pose) {
