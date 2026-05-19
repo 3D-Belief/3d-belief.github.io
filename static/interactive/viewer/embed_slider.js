@@ -49,6 +49,7 @@ const progressBar = document.getElementById("progress-bar");
 const progressLabel = document.getElementById("progress-label");
 const copyPoseButton = document.getElementById("copy-pose");
 const revealSlider = document.getElementById("reveal-slider");
+const toggleImaginedButton = document.getElementById("toggle-imagined");
 const inputScreen = document.getElementById("input-screen");
 const inputImage = document.getElementById("input-image");
 
@@ -155,10 +156,24 @@ function clampStep(stepIndex) {
   return Math.min(Math.max(Number(stepIndex) || 0, 0), maxStep);
 }
 
+function maxStepIndex() {
+  return Math.max(0, (config?.steps?.length || 1) - 1);
+}
+
+function updateToggleImagined(stepIndex) {
+  if (!toggleImaginedButton) {
+    return;
+  }
+  const imaginedShown = Number(stepIndex) > 0;
+  toggleImaginedButton.setAttribute("aria-pressed", imaginedShown ? "true" : "false");
+  toggleImaginedButton.textContent = "Toggle Imagined";
+}
+
 function syncRevealControl(stepIndex) {
   if (revealSlider) {
     revealSlider.value = String(stepIndex);
   }
+  updateToggleImagined(stepIndex);
 }
 
 function configureRevealControl(initialStep) {
@@ -334,6 +349,14 @@ canvas.addEventListener("pointerenter", focusCanvas);
 copyPoseButton?.addEventListener("click", copyPoseRecord);
 revealSlider?.addEventListener("input", () => {
   loadStep(revealSlider.value).catch((error) => {
+    console.error(error);
+    setProgress(true, 0, `Failed to load reveal step: ${error.message}`);
+  });
+});
+
+toggleImaginedButton?.addEventListener("click", () => {
+  const nextStep = activeStep > 0 ? 0 : maxStepIndex();
+  loadStep(nextStep).catch((error) => {
     console.error(error);
     setProgress(true, 0, `Failed to load reveal step: ${error.message}`);
   });

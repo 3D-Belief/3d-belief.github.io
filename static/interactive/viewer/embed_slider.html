@@ -133,10 +133,10 @@
         bottom: 12px;
         z-index: 10;
         display: grid;
-        grid-template-columns: auto 1fr auto;
+        grid-template-columns: auto 1fr auto auto;
         align-items: center;
         gap: 10px;
-        width: min(420px, calc(100vw - 24px));
+        width: min(480px, calc(100vw - 24px));
         padding: 9px 12px;
         border: 1px solid rgba(255, 255, 255, 0.14);
         border-radius: 6px;
@@ -156,6 +156,32 @@
 
       .viewer-controls span {
         white-space: nowrap;
+      }
+
+      .toggle-imagined {
+        white-space: nowrap;
+        padding: 6px 11px;
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.92);
+        font: inherit;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1;
+        cursor: pointer;
+        transition: background 0.15s ease, border-color 0.15s ease;
+      }
+
+      .toggle-imagined:hover {
+        background: rgba(255, 255, 255, 0.16);
+        border-color: rgba(255, 255, 255, 0.4);
+      }
+
+      .toggle-imagined[aria-pressed="true"] {
+        background: #ffffff;
+        border-color: #ffffff;
+        color: #0b0e14;
       }
 
       @media (max-width: 760px) {
@@ -210,6 +236,15 @@
       <span>Observed</span>
       <input id="reveal-slider" type="range" min="0" max="9" step="1" value="0" />
       <span>Imagined</span>
+      <button
+        id="toggle-imagined"
+        class="toggle-imagined"
+        type="button"
+        aria-pressed="false"
+        title="Toggle the imagined scene on or off"
+      >
+        Toggle Imagined
+      </button>
     </div>
     <div id="progress" class="progress" hidden>
       <div id="progress-label">Loading Gaussian scene...</div>
