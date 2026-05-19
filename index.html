@@ -205,187 +205,9 @@
             <h2 class="title is-3">Abstract</h2>
             <div class="content has-text-justified">
               <p>
-                Recent advances in visual generative models have highlighted the promise of learning generative world models.
-                However, most existing approaches frame world modeling as novel-view synthesis or future-frame prediction, emphasizing visual realism rather than the structured uncertainty required by embodied agents acting under partial observability.
-                In this work, we propose a different perspective: world modeling as embodied belief inference in 3D space.
-                From this view, a world model should not merely render what may be seen, but maintain and update an agent's belief about the unobserved 3D world as new observations are acquired.
-                We identify several key capabilities for such models, including spatially consistent scene memory, multi-hypothesis belief sampling, sequential belief updating, and semantically informed prediction of unseen regions.
-                We instantiate these ideas in 3D-Belief, a generative 3D world model that infers explicit, actionable 3D beliefs from partial observations and updates them online over time.
-                Unlike prior visual prediction models, 3D-Belief represents uncertainty directly in 3D, enabling embodied agents to imagine plausible scene completions and reason over partially observed environments.
-                We evaluate 3D-Belief on 2D visual quality for scene memory and unobserved-scene imagination, object- and scene-level 3D imagination using our proposed 3D-CORE benchmark, and challenging object navigation tasks in both simulation and the real world.
-                Experiments show that 3D-Belief improves 2D and 3D imagination quality and downstream embodied task performance compared to state-of-the-art methods.
+                Recent visual generative models have advanced world modeling, but most focus on novel-view synthesis or future-frame prediction rather than the structured uncertainty needed for embodied agents under partial observability. We propose world modeling as embodied belief inference in 3D space and introduce 3D-Belief, a generative 3D world model that maintains, samples, and updates explicit 3D beliefs from partial observations. By representing uncertainty directly in 3D, 3D-Belief enables spatially consistent memory, plausible scene completion, and semantic reasoning over unseen regions. Evaluations on 2D visual belief, our 3D-CORE benchmark, and object navigation in simulation and the real world show that 3D-Belief improves 2D/3D imagination quality and downstream embodied task performance over state-of-the-art methods.
               </p>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Key Capabilities of a 3D Belief Model -->
-    <section class="section">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column is-full-width">
-            <h2 class="title is-3">Core Capabilities</h2>
-            <div class="content has-text-justified">
-              <p>
-                There remains a substantial gap between what previous visual generative models are trained to do and what a world model must provide for embodied decision making under partial observability. 
-                We theorize that robust embodied agents require a generative belief model that has the following key capacities.
-              </p>
-            </div>
-
-            <!-- 1) Multi-hypothesis belief sampling -->
-            <h3 class="title is-4" style="margin-top: 1.25rem;">Multi-hypothesis Belief Sampling</h3>
-            <video
-              class="capabilities-video"
-              autoplay
-              muted
-              loop
-              playsinline
-              preload="metadata"
-            >
-              <source src="./static/videos/capabilities-multi.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-
-            <!-- 2) Sequential belief updating -->
-            <h3 class="title is-4" style="margin-top: 2rem;">Sequential Belief Updating</h3>
-            <video
-              class="capabilities-video"
-              autoplay
-              muted
-              loop
-              playsinline
-              preload="metadata"
-            >
-              <source src="./static/videos/capabilities-seq.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-
-            <!-- 3) Spatially consistent scene memory -->
-            <h3 class="title is-4" style="margin-top: 2rem;">Spatially Consistent Scene Memory</h3>
-            <video
-              class="capabilities-video"
-              autoplay
-              muted
-              loop
-              playsinline
-              preload="metadata"
-            >
-              <source src="./static/videos/capabilities-memory.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-
-            <!-- 4) Semantically informed future prediction -->
-            <h3 class="title is-4" style="margin-top: 2rem;">Semantically Informed Future Prediction</h3>
-            <video
-              class="capabilities-video"
-              autoplay
-              muted
-              loop
-              playsinline
-              preload="metadata"
-            >
-              <source src="./static/videos/capabilities-semantic.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3D-Belief -->
-    <section class="section">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column is-full-width">
-            <h2 class="title is-3">3D-Belief</h2>
-            <div class="content has-text-justified">
-              <p>
-                We propose a generative 3D world model, 3D-Belief, that learns to predict and sequentially update explicit 3D representations of a scene online.
-              </p>
-            </div>
-            <section class="hero teaser">
-                <div class="container is-max-desktop">
-                  <div class="content has-text-justified">
-                    <div class="video-container">
-                      <video autoplay controls muted loop playsinline width="100%">
-                        <source
-                          src="./static/videos/model.mp4"
-                          type="video/mp4"
-                        />
-                      </video>
-                    </div>
-                  </div>
-                </div>
-            </section>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Vision Results -->
-    <section class="section">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column is-full-width visual-quality-section">
-            <h2 class="title is-3">Video Results</h2>
-            <div class="content has-text-justified">
-              <p>
-                We compare the visual quality of 3D-Belief's predictions against state-of-the-art generative world models on unseen future viewpoints. Each panel shows, from left to right: <strong>Ground Truth</strong>, <strong>3D-Belief (Ours)</strong>, <strong>DFoT</strong>, and <strong>Gen3C</strong> (RE10K) / <strong>NWM</strong> (AI2-THOR). 3D-Belief produces predictions that are more spatially consistent and more faithful to the ground truth than the baselines.
-              </p>
-            </div>
-
-            <h4 class="title is-5 capabilities-heading" style="margin-top: 1rem;">RE10K</h4>
-            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
-              <source src="./static/videos/comparisons/imagination_re10k_episode_000006_000013_000062_000070.mp4" type="video/mp4" />
-            </video>
-            <div style="height: 1rem;"></div>
-            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
-              <source src="./static/videos/comparisons/imagination_re10k_episode_000092_000017_000069_000073.mp4" type="video/mp4" />
-            </video>
-            <div style="height: 1rem;"></div>
-            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
-              <source src="./static/videos/comparisons/imagination_re10k_episode_000131_000000_000037_000079.mp4" type="video/mp4" />
-            </video>
-            <div style="height: 1rem;"></div>
-            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
-              <source src="./static/videos/comparisons/imagination_re10k_episode_000181_000000_000050_000079.mp4" type="video/mp4" />
-            </video>
-            <div style="height: 1rem;"></div>
-            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
-              <source src="./static/videos/comparisons/imagination_re10k_episode_000187_000032_000072_000086.mp4" type="video/mp4" />
-            </video>
-            <div style="height: 1rem;"></div>
-            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
-              <source src="./static/videos/comparisons/imagination_re10k_episode_000658_000000_000057_000079.mp4" type="video/mp4" />
-            </video>
-
-            <h4 class="title is-5 capabilities-heading" style="margin-top: 1.5rem;">AI2-THOR</h4>
-            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
-              <source src="./static/videos/comparisons/imagination_spoc_episode_000057_000000_000005_000010.mp4" type="video/mp4" />
-            </video>
-            <div style="height: 1rem;"></div>
-            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
-              <source src="./static/videos/comparisons/imagination_spoc_episode_000062_000002_000007_000012.mp4" type="video/mp4" />
-            </video>
-            <div style="height: 1rem;"></div>
-            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
-              <source src="./static/videos/comparisons/imagination_spoc_episode_000070_000000_000005_000010.mp4" type="video/mp4" />
-            </video>
-            <div style="height: 1rem;"></div>
-            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
-              <source src="./static/videos/comparisons/imagination_spoc_episode_000076_000000_000005_000010.mp4" type="video/mp4" />
-            </video>
-            <div style="height: 1rem;"></div>
-            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
-              <source src="./static/videos/comparisons/imagination_spoc_episode_000097_000033_000038_000044.mp4" type="video/mp4" />
-            </video>
-            <div style="height: 1rem;"></div>
-            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
-              <source src="./static/videos/comparisons/imagination_spoc_scene_114_s28_e39.mp4" type="video/mp4" />
-            </video>
           </div>
         </div>
       </div>
@@ -471,6 +293,72 @@
                 Use the slider to reveal imagined geometry
               </span>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vision Results -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-full-width visual-quality-section">
+            <h2 class="title is-3">Video Results</h2>
+            <div class="content has-text-justified">
+              <p>
+                We compare the visual quality of 3D-Belief's predictions against state-of-the-art generative world models on unseen future viewpoints. Each panel shows, from left to right: <strong>Ground Truth</strong>, <strong>3D-Belief (Ours)</strong>, <strong>DFoT</strong>, and <strong>Gen3C</strong> (RE10K) / <strong>NWM</strong> (AI2-THOR). 3D-Belief produces predictions that are more spatially consistent and more faithful to the ground truth than the baselines.
+              </p>
+            </div>
+
+            <h4 class="title is-5 capabilities-heading" style="margin-top: 1rem;">RE10K</h4>
+            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
+              <source src="./static/videos/comparisons/imagination_re10k_episode_000006_000013_000062_000070.mp4" type="video/mp4" />
+            </video>
+            <div style="height: 1rem;"></div>
+            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
+              <source src="./static/videos/comparisons/imagination_re10k_episode_000092_000017_000069_000073.mp4" type="video/mp4" />
+            </video>
+            <div style="height: 1rem;"></div>
+            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
+              <source src="./static/videos/comparisons/imagination_re10k_episode_000131_000000_000037_000079.mp4" type="video/mp4" />
+            </video>
+            <div style="height: 1rem;"></div>
+            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
+              <source src="./static/videos/comparisons/imagination_re10k_episode_000181_000000_000050_000079.mp4" type="video/mp4" />
+            </video>
+            <div style="height: 1rem;"></div>
+            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
+              <source src="./static/videos/comparisons/imagination_re10k_episode_000187_000032_000072_000086.mp4" type="video/mp4" />
+            </video>
+            <div style="height: 1rem;"></div>
+            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
+              <source src="./static/videos/comparisons/imagination_re10k_episode_000658_000000_000057_000079.mp4" type="video/mp4" />
+            </video>
+
+            <h4 class="title is-5 capabilities-heading" style="margin-top: 1.5rem;">AI2-THOR</h4>
+            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
+              <source src="./static/videos/comparisons/imagination_spoc_episode_000057_000000_000005_000010.mp4" type="video/mp4" />
+            </video>
+            <div style="height: 1rem;"></div>
+            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
+              <source src="./static/videos/comparisons/imagination_spoc_episode_000062_000002_000007_000012.mp4" type="video/mp4" />
+            </video>
+            <div style="height: 1rem;"></div>
+            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
+              <source src="./static/videos/comparisons/imagination_spoc_episode_000070_000000_000005_000010.mp4" type="video/mp4" />
+            </video>
+            <div style="height: 1rem;"></div>
+            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
+              <source src="./static/videos/comparisons/imagination_spoc_episode_000076_000000_000005_000010.mp4" type="video/mp4" />
+            </video>
+            <div style="height: 1rem;"></div>
+            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
+              <source src="./static/videos/comparisons/imagination_spoc_episode_000097_000033_000038_000044.mp4" type="video/mp4" />
+            </video>
+            <div style="height: 1rem;"></div>
+            <video class="capabilities-video" autoplay muted loop playsinline preload="metadata">
+              <source src="./static/videos/comparisons/imagination_spoc_scene_114_s28_e39.mp4" type="video/mp4" />
+            </video>
           </div>
         </div>
       </div>
@@ -663,6 +551,44 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3D-Belief -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-full-width">
+            <h2 class="title is-3">Method Overview</h2>
+            <h3 class="title is-4" style="margin-top: 1.25rem;">Model Architecture</h3>
+            <div class="content has-text-justified">
+              <p>
+                3D-Belief is a diffusion-based generative model with a shared U-ViT backbone and two heads that jointly predict an explicit 3D Gaussian Splatting scene together with distilled CLIP-style semantics. An MVS-style predictor with a multi-view Transformer and a cost-volume module guides depth and geometry, yielding per-primitive Gaussians (mean, covariance, opacity, appearance, semantic embedding) for both observed and imagined regions. Differentiable splatting then renders RGB, depth, and open-vocabulary semantic maps from any viewpoint.
+              </p>
+            </div>
+            <figure style="margin-top: 1rem; text-align: center;">
+              <img
+                src="./static/images/model.png"
+                alt="3D-Belief model architecture"
+                style="max-width: 100%; height: auto; border-radius: 12px;"
+              />
+            </figure>
+
+            <h3 class="title is-4" style="margin-top: 1.5rem;">Online Belief Update</h3>
+            <div class="content has-text-justified">
+              <p>
+                We reformulate POMDP belief tracking as an autoregressive update over explicit 3D representations. As each new observation and camera pose arrives, the observed Gaussians are expanded to incorporate the new evidence, while the previously imagined regions are resampled into a fresh imagination consistent with what is now seen. This keeps a spatially consistent 3D scene memory while continually revising beliefs about unobserved space to support downstream embodied decisions.
+              </p>
+            </div>
+            <figure style="margin-top: 1rem; text-align: center;">
+              <img
+                src="./static/images/belief_update.png"
+                alt="3D-Belief online belief update mechanism"
+                style="max-width: 100%; height: auto; border-radius: 12px;"
+              />
+            </figure>
           </div>
         </div>
       </div>
