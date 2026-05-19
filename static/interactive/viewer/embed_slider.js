@@ -61,6 +61,7 @@ let splatScene = null;
 let controls = null;
 let currentPose = null;
 let activeStep = -1;
+let lastImaginedStep = null;
 let loadGeneration = 0;
 let animationStarted = false;
 
@@ -165,6 +166,9 @@ function updateToggleImagined(stepIndex) {
     return;
   }
   const imaginedShown = Number(stepIndex) > 0;
+  if (imaginedShown) {
+    lastImaginedStep = Number(stepIndex);
+  }
   toggleImaginedButton.setAttribute("aria-pressed", imaginedShown ? "true" : "false");
   toggleImaginedButton.textContent = "Toggle Imagined";
 }
@@ -355,7 +359,8 @@ revealSlider?.addEventListener("input", () => {
 });
 
 toggleImaginedButton?.addEventListener("click", () => {
-  const nextStep = activeStep > 0 ? 0 : maxStepIndex();
+  const restoreStep = lastImaginedStep && lastImaginedStep > 0 ? lastImaginedStep : maxStepIndex();
+  const nextStep = activeStep > 0 ? 0 : restoreStep;
   loadStep(nextStep).catch((error) => {
     console.error(error);
     setProgress(true, 0, `Failed to load reveal step: ${error.message}`);

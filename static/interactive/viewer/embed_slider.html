@@ -12,6 +12,7 @@
         color: #f4f4f5;
         --input-col-width: max(220px, 26vw);
         --viewer-col-width: calc(100vw - var(--input-col-width));
+        --controls-height: 60px;
       }
 
       * {
@@ -29,9 +30,10 @@
 
       #viewer {
         position: fixed;
-        inset: 0;
+        left: 0;
+        top: 0;
         width: 100vw;
-        height: 100vh;
+        height: calc(100vh - var(--controls-height));
         display: block;
         background: #000000;
       }
@@ -95,19 +97,20 @@
         width: var(--viewer-col-width);
       }
 
-      body.has-input-panel .progress,
-      body.has-input-panel .viewer-controls {
+      body.has-input-panel .progress {
         left: calc(var(--input-col-width) + (var(--viewer-col-width) / 2));
       }
 
       body.has-input-panel .viewer-controls {
-        width: min(420px, calc(var(--viewer-col-width) - 24px));
+        left: var(--input-col-width);
+        right: 0;
+        width: var(--viewer-col-width);
       }
 
       .progress {
         position: fixed;
         left: 50%;
-        top: 50%;
+        top: calc((100vh - var(--controls-height)) / 2);
         width: min(320px, 72vw);
         padding: 14px;
         border: 1px solid rgba(255, 255, 255, 0.12);
@@ -129,22 +132,22 @@
 
       .viewer-controls {
         position: fixed;
-        left: 50%;
-        bottom: 12px;
+        left: 0;
+        right: 0;
+        bottom: 0;
         z-index: 10;
         display: grid;
-        grid-template-columns: auto 1fr auto auto;
+        grid-template-columns: auto minmax(120px, 1fr) auto auto;
         align-items: center;
-        gap: 10px;
-        width: min(480px, calc(100vw - 24px));
-        padding: 9px 12px;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        border-radius: 6px;
-        background: rgba(8, 10, 14, 0.72);
+        gap: 12px;
+        width: 100vw;
+        height: var(--controls-height);
+        padding: 0 18px;
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(8, 10, 14, 0.92);
         color: rgba(255, 255, 255, 0.88);
         font-size: 12px;
         line-height: 1;
-        transform: translateX(-50%);
         backdrop-filter: blur(18px);
       }
 
@@ -187,7 +190,7 @@
       @media (max-width: 760px) {
         body.has-input-panel {
           --input-panel-height: min(32vh, 220px);
-          --viewer-panel-height: calc(100vh - var(--input-panel-height));
+          --viewer-panel-height: calc(100vh - var(--input-panel-height) - var(--controls-height));
         }
 
         body.has-input-panel .input-screen {
@@ -218,8 +221,9 @@
         }
 
         body.has-input-panel .viewer-controls {
-          left: 50%;
-          width: min(420px, calc(100vw - 24px));
+          left: 0;
+          right: 0;
+          width: 100vw;
         }
       }
     </style>
